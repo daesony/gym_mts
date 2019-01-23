@@ -1,67 +1,31 @@
-## How to create new environments for Gym
+## Reinforcement Learning for finance
 
-* Create a new repo called gym-foo, which should also be a PIP package.
+* 금융데이터를 활용하여 강화학습을 적용해보기 위한 레파지토리입니다.
 
-* A good example is https://github.com/openai/gym-soccer.
+* 공공장소에서 진행하는 퀀트모임에서 주도하고 있는 프로젝트입니다. 
+  (https://gonggongplace.com/)
 
-* It should have at least the following files:
+* 강화학습 금융환경을 위해서 Gym 스타일의 커스텀환경을 구성하였습니다.
+
   ```sh
-  gym-foo/
+  gym-mts/
     README.md
     setup.py
-    gym_foo/
-      __init__.py
-      envs/
-        __init__.py
-        foo_env.py
-  ```
-
-* `gym-foo/setup.py` should have:
-
-  ```python
-  from setuptools import setup
-
-  setup(name='gym_foo',
-        version='0.0.1',
-        install_requires=['gym']
-  )  
-  ```
-
-* `gym-foo/gym_foo/__init__.py` should have:
-  ```python
-  from gym.envs.registration import register
-  
-  register(
-      id='foo-v0',
-      entry_point='gym_foo.envs:FooEnv',
-  )
-  ```
-
-* `gym-foo/gym_foo/envs/__init__.py` should have:
-  ```python
-  from gym_foo.envs.foo_env import FooEnv
-  ```
-
-* `gym-foo/gym_foo/envs/foo_env.py` should look something like:
-  ```python
-  import gym
-  from gym import error, spaces, utils
-  from gym.utils import seeding
-
-  class FooEnv(gym.Env):
-    metadata = {'render.modes': ['human']}
-
-    def __init__(self):
-      ...
-    def step(self, action):
-      ...
-    def reset(self):
-      ...
-    def render(self, mode='human', close=False):
-      ...
+    data/
+    gym/
+    mts/
   ```
 
 
 
+## Financial Data
+
+- 현재 선물데이터를 data폴더에 업로드 해놓았습니다.
+- 금융데이터를 공유하고자 하시는 분은 data 폴더에 파일형태로 업로드를 하시면 됩니다.
 
 
+
+## RL Algorithms
+
+- 현재 강화학습 알고리즘은 ddpg를 사용하고 있습니다.
+- 추가적인 알고리즘을 추가하고자 하시는 분은 mts 폴더에 업로드를 하시면 됩니다.
